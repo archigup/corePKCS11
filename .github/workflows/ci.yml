@@ -53,12 +53,10 @@ jobs:
           lcov --rc lcov_branch_coverage=1 --remove build/coverage.info '*CMakeCCompilerId*' --output-file build/coverage.info
           lcov --rc lcov_branch_coverage=1 --remove build/coverage.info '*mocks*' --output-file build/coverage.info
           lcov --list build/coverage.info
-      - name: lcov-cop
-        uses: ChicagoFlutter/lcov-cop@v1.0.2
+      - name: Check Coverage
+        uses: FreeRTOS/CI-CD-Github-Actions/coverage-cop@main
         with:
           path: "build/coverage.info"
-          min_coverage: 99
-          exclude: "**/*test*"
   complexity:
     runs-on: ubuntu-latest
     steps:
